@@ -23,7 +23,8 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "Microblog\\Controllers\\": "controllers/"
+            "Microblog\\Controllers\\": "controllers/",
+            "Microblog\\Models\\": "models/"
         }
     },
     "config": {

@@ -11,13 +11,21 @@ namespace Microblog\Controllers;
 use Psr\Log\LoggerInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Microblog\Models\Database;
 
 class DefaultController
 {
     private $logger;
     private $renderer;
+    private $db;
+
+    public function __construct()
+    {
+
+    }
 
     public function index($app){
+        $this->db = new Database($app);
         // Log message
 //        $app->log("Slim-Skeleton '/' route");
         // Render index view

@@ -24,6 +24,7 @@
         "psr-4": {
             "Tests\\": "tests/",
             "Microblog\\Controllers\\": "controllers/",
+            "Microblog\\Controllers\\Admin\\": "controllers/admin",
             "Microblog\\Models\\": "models/"
         }
     },

@@ -8,32 +8,27 @@
 
 namespace Microblog\Controllers;
 
-use Psr\Log\LoggerInterface;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
-use Microblog\Models\Database;
+use Microblog\Models\Posts;
 
 class DefaultController
 {
-    private $logger;
-    private $renderer;
-    private $db;
-
     public function __construct()
     {
 
     }
 
-    public function index($app){
-        $this->db = new Database($app);
-        // Log message
-//        $app->log("Slim-Skeleton '/' route");
-        // Render index view
-        return $app->render('index.phtml');
+    public function index(\Slim\Slim $app){
+        $postsModel = new Posts($app);
+        $posts = $postsModel->getAll();
+
+        $app->render('home.phtml', ['posts' => $posts]);
     }
 
-    public function throwException(RequestInterface $request, ResponseInterface $response, array $args){
-//        $this->logger->info("Slim-Skeleton '/throw' route");
-        throw new \Exception('testing errors 1.2.3..');
+    public function post(\Slim\Slim $app){
+        $id = 1;
+        $postsModel = new Posts($app);
+        $post = $postsModel->getById($id);
+
+        $app->render('post.phtml', ['post' => $post]);
     }
 }

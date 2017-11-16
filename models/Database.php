@@ -9,9 +9,9 @@
 namespace Microblog\Models;
 
 
-class Database
+abstract class Database
 {
-    private $conn;
+    protected $conn;
 
     public function __construct($app)
     {
@@ -19,5 +19,8 @@ class Database
         $this->conn = new \PDO("mysql:host=localhost;dbname={$db_settings['dbname']}", $db_settings['user'], $db_settings['password'] );
     }
 
+    abstract public function getById($id);
+
+    abstract public function getAll();
 
 }

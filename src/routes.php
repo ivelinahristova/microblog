@@ -1,5 +1,6 @@
 <?php
-
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 // Routes
 
 $app->get('/', 'Microblog\Controllers\DefaultController:index')
@@ -14,6 +15,10 @@ $app->get('/admin', 'Microblog\Controllers\Admin\PostsController:lists')
     ->name('lists')
     ->setParams([$app]);
 
+$app->get('/admin/posts', 'Microblog\Controllers\Admin\PostsController:lists')
+    ->name('lists')
+    ->setParams([$app]);
+
 $app->get('/admin/login', 'Microblog\Controllers\Admin\UsersController:login')
     ->name('login')
     ->setParams([$app]);
@@ -22,3 +27,10 @@ $app->post('/admin/login', 'Microblog\Controllers\Admin\UsersController:loginSub
     ->name('loginSubmit')
     ->setParams([$app]);
 
+$app->get('/admin/posts/add', 'Microblog\Controllers\Admin\PostsController:add')
+    ->name('addPost')
+    ->setParams([$app]);
+
+$app->post('/admin/posts/add', 'Microblog\Controllers\Admin\PostsController:addSubmit')
+    ->name('addPostSubmit')
+    ->setParams([$app]);

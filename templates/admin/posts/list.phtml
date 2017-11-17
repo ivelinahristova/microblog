@@ -1,4 +1,8 @@
 <?php /** $posts  */ ?>
+<?php if(isset($msg) && $msg): ?>
+    <?= $msg; ?>
+<?php endif; ?>
+
 <?php foreach($posts as $post): ?>
     <?= $post['title']; ?>
 <?php endforeach; ?>

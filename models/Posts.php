@@ -29,4 +29,14 @@ class Posts extends Database
         $result = $sth->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public function insert($title, $text)
+    {
+        $sth = $this->conn->prepare("INSERT INTO posts (title, text) VALUES (:title, :text)");
+        $sth->bindParam(':title', $title, \PDO::PARAM_STR);
+        $sth->bindParam(':text', $text, \PDO::PARAM_STR);
+        $result = $sth->execute();
+
+        return $result;
+    }
 }

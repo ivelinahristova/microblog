@@ -18,7 +18,6 @@ class UsersController
     }
 
     public function login(\Slim\Slim $app){
-
         $app->render('admin/login.phtml', []);
     }
 

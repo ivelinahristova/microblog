@@ -11,8 +11,8 @@ $app->get('/post', 'Microblog\Controllers\DefaultController:post')
     ->name('post')
     ->setParams([$app]);
 
-$app->get('/admin', 'Microblog\Controllers\Admin\PostsController:lists')
-    ->name('lists')
+$app->get('/admin', 'Microblog\Controllers\Admin\DashboardController:index')
+    ->name('dashboard')
     ->setParams([$app]);
 
 $app->get('/admin/posts', 'Microblog\Controllers\Admin\PostsController:lists')

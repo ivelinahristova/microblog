@@ -1,8 +1,55 @@
-<?php /** $posts  */ ?>
-<?php if(isset($msg) && $msg): ?>
-    <?= $msg; ?>
-<?php endif; ?>
+<div class="card-header">
+    <i class="fa fa-file"></i> Posts
+</div>
+<div class="card-body">
 
-<?php foreach($posts as $post): ?>
-    <?= $post['title']; ?>
-<?php endforeach; ?>
+
+    <?php /** $posts  */ ?>
+    <?php if(isset($msg) && $msg): ?>
+        <?= $msg; ?>
+    <?php endif; ?>
+
+
+
+
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Text</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th>Title</th>
+                <th>Text</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </tfoot>
+            <tbody>
+            <?php foreach($posts as $post): ?>
+
+                <tr>
+                    <td><?= $post['title']; ?></td>
+                    <td><?= $post['text']; ?></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            <?php endforeach; ?>
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

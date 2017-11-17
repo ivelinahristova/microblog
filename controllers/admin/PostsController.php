@@ -21,7 +21,9 @@ class PostsController
         $postsModel = new Posts($app);
         $posts = $postsModel->getAll();
 
+        $app->render('admin/header.phtml', []);
         $app->render('admin/posts/list.phtml', ['posts' => $posts]);
+        $app->render('admin/footer.phtml', []);
     }
 
     public function add(\Slim\Slim $app){
@@ -29,8 +31,9 @@ class PostsController
 //        $posts = $postsModel->getAll();
 
 
-
+        $app->render('admin/header.phtml', []);
         $app->render('admin/posts/add.phtml', []);
+        $app->render('admin/footer.phtml', []);
     }
 
     public function addSubmit(\Slim\Slim $app){
@@ -46,13 +49,17 @@ class PostsController
         ];
         $params['msg'] = $postsModel->insert($title, $text) ? 'You successfully added the post' : 'There was a problem adding the post';
 
+        $app->render('admin/header.phtml', []);
         $app->render('admin/posts/list.phtml', $params);
+        $app->render('admin/footer.phtml', []);
     }
 
     public function edit(\Slim\Slim $app){
         $postsModel = new Posts($app);
         $posts = $postsModel->getAll();
 
+        $app->render('admin/header.phtml', []);
         $app->render('admin/posts/list.phtml', ['posts' => $posts]);
+        $app->render('admin/footer.phtml', []);
     }
 }

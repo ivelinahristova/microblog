@@ -1,5 +1,19 @@
-<form action="/admin/posts/add" method="post">
-    <input type="text" name="title" />
-    <textarea name="text"></textarea>
-    <input type="submit" value="Add Post" />
-</form>
+<div class="card-header">
+    <i class="fa fa-file"></i> Add new post
+</div>
+<div class="card-body">
+<div class="col-md-6">
+    <form action="/admin/posts/add" method="post">
+        <div class="form-group">
+            <label for="postTitle">Title</label>
+            <input name="title" class="form-control" id="postTitle" type="text" placeholder="Enter post title">
+        </div>
+        <div class="form-group">
+            <label for="postText">Text</label>
+            <textarea name="text" class="form-control" id="postText" ></textarea>
+        </div>
+
+        <input class="btn btn-primary btn-block"  type="submit" value="Add Post" />
+    </form>
+</div>
+</div>

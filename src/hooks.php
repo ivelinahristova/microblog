@@ -8,7 +8,9 @@
 
 $app->hook('slim.before.dispatch', function () use ($app) {
     // Restrict admin routes for only logged users
-    if((!isset($_SESSION['userId']) || !$_SESSION['userId']) && ($app->request->getResourceUri() !== $app->urlFor('login'))) {
-        $app->redirectTo('login');
+    if(strpos($app->request->getResourceUri(), '/admin') !== false) {
+        if((!isset($_SESSION['userId']) || !$_SESSION['userId']) && ($app->request->getResourceUri() !== $app->urlFor('login'))) {
+            $app->redirectTo('login');
+        }
     }
 });

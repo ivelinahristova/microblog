@@ -1,6 +1,4 @@
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
 var minifycss = require('gulp-minify-css');
 
 gulp.task('css', function() {
@@ -14,5 +12,5 @@ gulp.task('css', function() {
 });
 
 gulp.task('default', function() {
-    gulp.run('css', 'js_admin');
+    gulp.run('css');
 });

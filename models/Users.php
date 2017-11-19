@@ -61,4 +61,13 @@ class Users extends Database
         $result = $sth->fetch(\PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public function getPosts($id) {
+        $sth = $this->conn->prepare("SELECT * FROM posts WHERE `user` = :userId");
+        $sth->bindParam(':userId', $id);
+        $sth->execute();
+
+        $result = $sth->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

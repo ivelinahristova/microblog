@@ -35,9 +35,10 @@ class PostsController extends DefaultController
         $formData = $app->request->post();
         $title = $formData['title'];
         $text = $formData['text'];
+        $userId = $this->userId;
 
         $this->params['posts'] = $posts;
-        $this->params['msg'] = $postsModel->insert($title, $text) ? 'You successfully added the post' : 'There was a problem adding the post';
+        $this->params['msg'] = $postsModel->insert($title, $text, $userId) ? 'You successfully added the post' : 'There was a problem adding the post';
 
         $app->render('admin/header.phtml', $this->params);
         $app->render('admin/posts/list.phtml', $this->params);

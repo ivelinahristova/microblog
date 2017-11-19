@@ -14,16 +14,18 @@ class DefaultController
 {
     protected $params = [];
     protected $isLogged = FALSE;
+    protected $userId = null;
 
     public function __construct()
     {
         session_start();
         if(isset($_SESSION['userId']) && $_SESSION['userId']) {
-            $this->params['userId'] = $_SESSION['userId'];
+            $this->userId = $_SESSION['userId'];
             $this->isLogged = TRUE;
         }
 
         $this->params['isLogged'] = $this->isLogged;
+        $this->params['userId'] = $this->userId;
     }
 
     public function index(\Slim\Slim $app){

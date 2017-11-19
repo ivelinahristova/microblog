@@ -3,7 +3,7 @@
     <!-- Blog Entries Column -->
     <div class="col-md-8">
 
-        <h1 class="my-4">Posts Archive
+        <h1 class="my-4">Posts Archive By <?= $author; ?>
         </h1>
 
         <?php foreach($posts as $post): ?>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-footer text-muted">
                     Posted on <?= $post['datepublished']; ?>
-                    <a href="/author/<?= $post['author_id']?>"><?= $post['author']; ?></a>
+                    <a href="#"><?= $post['author']; ?></a>
                 </div>
             </div>
         <?php endforeach; ?>

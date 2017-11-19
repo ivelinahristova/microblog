@@ -25,4 +25,13 @@ class DefaultController
         $app->render('home.phtml', ['posts' => $posts]);
         $app->render('footer.phtml', []);
     }
+
+    public function author(\Slim\Slim $app){
+        $postsModel = new Posts($app);
+        $posts = $postsModel->getAll();
+
+        $app->render('header.phtml', []);
+        $app->render('home.phtml', ['posts' => $posts]);
+        $app->render('footer.phtml', []);
+    }
 }

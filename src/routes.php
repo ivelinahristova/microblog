@@ -1,5 +1,6 @@
 <?php
 use Microblog\Models\Posts;
+use Microblog\Models\Users;
 // Routes
 
 $app->get('/', 'Microblog\Controllers\DefaultController:index')
@@ -15,6 +16,17 @@ $app->get('/post/:id', function($id) use ($app) {
     $app->render('footer.phtml', []);
     })
     ->name('post');
+
+$app->get('/author/:id', function($id) use ($app) {
+    $usersModel = new Users($app);
+    $user = $usersModel->getById($id);
+    $posts = $usersModel->getPosts($id);
+
+    $app->render('header.phtml', []);
+    $app->render('author.phtml', ['posts' => $posts, 'author' => $user['name']]);
+    $app->render('footer.phtml', []);
+})
+    ->name('author');
 
 $app->get('/admin', 'Microblog\Controllers\Admin\DashboardController:index')
     ->name('dashboard')

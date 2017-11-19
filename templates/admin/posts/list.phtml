@@ -12,7 +12,7 @@
                 <th>Title</th>
                 <th>Text</th>
                 <th>Datepublished</th>
-                <th></th>
+                <th>Added By</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -22,7 +22,7 @@
                 <th>Title</th>
                 <th>Text</th>
                 <th>Datepublished</th>
-                <th></th>
+                <th>Added By</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -34,7 +34,7 @@
                     <td><?= $post['title']; ?></td>
                     <td><?= mb_strcut($post['text'], 0, 25); ?> ...</td>
                     <td><?= $post['datepublished']; ?></td>
-                    <td></td>
+                    <td><?= $post['author']; ?></td>
                     <td></td>
                     <td></td>
                 </tr>

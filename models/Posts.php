@@ -21,6 +21,16 @@ class Posts extends Database
         return $result;
     }
 
+    public function deleteById($id)
+    {
+        $sth = $this->conn->prepare("DELETE FROM posts WHERE posts.id = :id");
+        $sth->bindParam(':id', $id);
+        $sth->execute();
+
+        $result = $sth->execute();
+        return $result;
+    }
+
     public function getAll()
     {
         $sth = $this->conn->prepare("SELECT posts.title, posts.id as post_id, posts.text, posts.datepublished, users.name as author, users.id as author_id FROM posts LEFT JOIN users ON posts.user = users.id");

@@ -1,7 +1,6 @@
 <?php
 use Microblog\Models\Posts;
 use Microblog\Models\Users;
-// Routes
 
 $app->get('/', 'Microblog\Controllers\DefaultController:index')
     ->name('index')
@@ -35,6 +34,14 @@ $app->get('/admin', 'Microblog\Controllers\Admin\DashboardController:index')
 $app->get('/admin/posts', 'Microblog\Controllers\Admin\PostsController:lists')
     ->name('lists')
     ->setParams([$app]);
+
+$app->get('/admin/posts/delete/:id', function($id) use ($app) {
+    $postsModel = new Posts($app);
+    $postsModel->deleteById($id);
+
+    $app->redirectTo('lists');
+})
+    ->name('postDelete');
 
 $app->get('/admin/login', 'Microblog\Controllers\Admin\UsersController:login')
     ->name('login')

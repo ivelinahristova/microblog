@@ -13,7 +13,7 @@
                 <th>Text</th>
                 <th>Datepublished</th>
                 <th>Added By</th>
-                <th></th>
+                <th>Actions</th>
                 <th></th>
             </tr>
             </thead>
@@ -23,7 +23,7 @@
                 <th>Text</th>
                 <th>Datepublished</th>
                 <th>Added By</th>
-                <th></th>
+                <th>Actions</th>
                 <th></th>
             </tr>
             </tfoot>
@@ -35,7 +35,7 @@
                     <td><?= mb_strcut($post['text'], 0, 25); ?> ...</td>
                     <td><?= $post['datepublished']; ?></td>
                     <td><?= $post['author']; ?></td>
-                    <td></td>
+                    <td><a href="/admin/posts/delete/<?= $post['post_id']; ?>"><i class="fa fa-trash"></i> </a></td>
                     <td></td>
                 </tr>
             <?php endforeach; ?>

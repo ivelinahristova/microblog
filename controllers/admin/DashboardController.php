@@ -9,10 +9,11 @@
 namespace Microblog\Controllers\Admin;
 
 use Microblog\Models\Posts;
+use Slim\Slim;
 
 class DashboardController extends DefaultController
 {
-    public function index(\Slim\Slim $app){
+    public function index(Slim $app){
         $postsModel = new Posts($app);
         $posts = $postsModel->getAll();
         $this->params['postsCount'] = count($posts);

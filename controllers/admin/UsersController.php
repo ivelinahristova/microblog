@@ -9,14 +9,15 @@
 namespace Microblog\Controllers\Admin;
 
 use Microblog\Models\Users;
+use Slim\Slim;
 
 class UsersController extends DefaultController
 {
-    public function login(\Slim\Slim $app){
+    public function login(Slim $app){
         $app->render('admin/login.phtml', $this->params);
     }
 
-    public function loginSubmit(\Slim\Slim $app){
+    public function loginSubmit(Slim $app){
         $usersModel = new Users($app);
         $formData = $app->request->post();
         $email = $formData['email'];
@@ -33,7 +34,7 @@ class UsersController extends DefaultController
         $app->redirectTo('dashboard');
     }
 
-    public function logout(\Slim\Slim $app) {
+    public function logout(Slim $app) {
         session_unset();
         session_regenerate_id();
 

@@ -9,10 +9,11 @@
 namespace Microblog\Controllers\Admin;
 
 use Microblog\Models\Posts;
+use Slim\Slim;
 
 class PostsController extends DefaultController
 {
-    public function lists(\Slim\Slim $app){
+    public function lists(Slim $app){
         $postsModel = new Posts($app);
         $posts = $postsModel->getAll();
         $this->params['posts'] = $posts;
@@ -22,13 +23,13 @@ class PostsController extends DefaultController
         $app->render('admin/footer.phtml', []);
     }
 
-    public function add(\Slim\Slim $app){
+    public function add(Slim $app){
         $app->render('admin/header.phtml', $this->params);
         $app->render('admin/posts/add.phtml', $this->params);
         $app->render('admin/footer.phtml', []);
     }
 
-    public function addSubmit(\Slim\Slim $app){
+    public function addSubmit(Slim $app){
         $postsModel = new Posts($app);
         $posts = $postsModel->getAll();
 
@@ -45,7 +46,7 @@ class PostsController extends DefaultController
         $app->render('admin/footer.phtml', []);
     }
 
-    public function edit(\Slim\Slim $app){
+    public function edit(Slim $app){
         $postsModel = new Posts($app);
         $posts = $postsModel->getAll();
         $this->params['posts'] = $posts;

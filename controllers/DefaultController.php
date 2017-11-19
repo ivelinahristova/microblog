@@ -9,15 +9,11 @@
 namespace Microblog\Controllers;
 
 use Microblog\Models\Posts;
+use Slim\Slim;
 
 class DefaultController
 {
-    public function __construct()
-    {
-
-    }
-
-    public function index(\Slim\Slim $app){
+    public function index(Slim $app){
         $postsModel = new Posts($app);
         $posts = $postsModel->getAll();
 
@@ -26,7 +22,7 @@ class DefaultController
         $app->render('footer.phtml', []);
     }
 
-    public function author(\Slim\Slim $app){
+    public function author(Slim $app){
         $postsModel = new Posts($app);
         $posts = $postsModel->getAll();
 

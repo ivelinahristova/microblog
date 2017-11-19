@@ -70,4 +70,25 @@ class Users extends Database
         $result = $sth->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public function insert($name, $email, $hashedPassword)
+    {
+        $sth = $this->conn->prepare("INSERT INTO users (`name`, email, `password`) VALUES (:userName, :email, :password)");
+        $sth->bindParam(':userName', $name, \PDO::PARAM_INT);
+        $sth->bindParam(':email', $email, \PDO::PARAM_STR);
+        $sth->bindParam(':password', $hashedPassword, \PDO::PARAM_STR);
+        $result = $sth->execute();
+
+        return $result;
+    }
+
+    public function changepass($password, $id)
+    {
+        $sth = $this->conn->prepare("UPDATE users SET password = :password, password_changed = password_changed + 1 WHERE id = :id");
+        $sth->bindParam(':password', $password, \PDO::PARAM_STR);
+        $sth->bindParam(':id', $id, \PDO::PARAM_INT);
+        $result = $sth->execute();
+
+        return $result;
+    }
 }

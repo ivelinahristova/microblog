@@ -62,3 +62,23 @@ $app->get('/admin/posts/add', 'Microblog\Controllers\Admin\PostsController:add')
 $app->post('/admin/posts/add', 'Microblog\Controllers\Admin\PostsController:addSubmit')
     ->name('addPostSubmit')
     ->setParams([$app]);
+
+$app->get('/admin/users', 'Microblog\Controllers\Admin\UsersController:lists')
+    ->name('usersLists')
+    ->setParams([$app]);
+
+$app->get('/admin/users/add', 'Microblog\Controllers\Admin\UsersController:add')
+    ->name('usersAdd')
+    ->setParams([$app]);
+
+$app->post('/admin/users/add', 'Microblog\Controllers\Admin\UsersController:addSubmit')
+    ->name('usersAddSubmit')
+    ->setParams([$app]);
+
+$app->get('/admin/users/changepass', 'Microblog\Controllers\Admin\UsersController:changepass')
+    ->name('changepass')
+    ->setParams([$app]);
+
+$app->post('/admin/users/changepass', 'Microblog\Controllers\Admin\UsersController:changepassSubmit')
+    ->name('changepassSubmit')
+    ->setParams([$app]);

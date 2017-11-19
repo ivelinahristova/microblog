@@ -1,0 +1,19 @@
+<div class="card-header">
+    <i class="fa fa-file"></i> Add new post
+</div>
+<div class="card-body">
+<div class="col-md-6">
+    <form action="/admin/users/add" method="post">
+        <div class="form-group">
+            <label for="postTitle">Name</label>
+            <input name="name" class="form-control" id="postTitle" type="text" placeholder="Enter admin name" required />
+        </div>
+        <div class="form-group">
+            <label for="postText">Email</label>
+            <input name="email" class="form-control" id="postTitle" type="email" placeholder="Enter admin email" required />
+        </div>
+
+        <input class="btn btn-primary btn-block"  type="submit" value="Add Administrator" />
+    </form>
+</div>
+</div>

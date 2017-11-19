@@ -49,7 +49,7 @@ class PostsController
         ];
         $params['msg'] = $postsModel->insert($title, $text) ? 'You successfully added the post' : 'There was a problem adding the post';
 
-        $app->render('admin/header.phtml', []);
+        $app->render('admin/header.phtml', $params);
         $app->render('admin/posts/list.phtml', $params);
         $app->render('admin/footer.phtml', []);
     }

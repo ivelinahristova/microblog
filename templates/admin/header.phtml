@@ -16,6 +16,7 @@
     <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="/vendor/sb/sb-admin.css" rel="stylesheet">
+    <script src="/vendor/tinymce/tinymce.min.js"></script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -23,7 +24,7 @@
 <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-            <a class="nav-link" href="/">
+            <a class="nav-link" href="/admin">
                 <i class="fa fa-fw fa-dashboard"></i>
                 <span class="nav-link-text">Dashboard</span>
             </a>
@@ -71,3 +72,10 @@
 
 <div class="content-wrapper">
     <div class="container-fluid">
+
+        <?php if(isset($msg) && $msg): ?>
+        <div class="alert alert-success in alert-dismissable" style="margin-top:18px;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            <?= $msg; ?>
+        </div>
+        <?php endif; ?>

@@ -10,8 +10,22 @@ namespace Microblog\Controllers\Admin;
 
 use Microblog\Models\Posts;
 
-class DashboardController extends DefaultController
+class DefaultController
 {
+    protected $params = [];
+    protected $isLogged = FALSE;
+
+    public function __construct()
+    {
+        session_start();
+        if(isset($_SESSION['userId']) && $_SESSION['userId']) {
+            $this->params['userId'] = $_SESSION['userId'];
+            $this->isLogged = TRUE;
+        }
+
+        $this->params['isLogged'] = $this->isLogged;
+    }
+
     public function index(\Slim\Slim $app){
         $postsModel = new Posts($app);
         $posts = $postsModel->getAll();

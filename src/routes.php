@@ -28,6 +28,10 @@ $app->get('/admin/login', 'Microblog\Controllers\Admin\UsersController:login')
     ->name('login')
     ->setParams([$app]);
 
+$app->get('/admin/logout', 'Microblog\Controllers\Admin\UsersController:logout')
+    ->name('logout')
+    ->setParams([$app]);
+
 $app->post('/admin/login', 'Microblog\Controllers\Admin\UsersController:loginSubmit')
     ->name('loginSubmit')
     ->setParams([$app]);

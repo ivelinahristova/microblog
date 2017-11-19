@@ -17,6 +17,9 @@ session_start();
 $settings = require __DIR__ . '/../src/settings.php';
 $app = new \Slim\Slim($settings);
 
+
+include __DIR__ . '/../src/hooks.php';
+
 // Set up dependencies
 require __DIR__ . '/../src/dependencies.php';
 

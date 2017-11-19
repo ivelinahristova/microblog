@@ -1,36 +1,39 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>Slim 2 Microblog</title>
-        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-        <style>
-            body {
-                margin: 50px 0 0 0;
-                padding: 0;
-                width: 100%;
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                text-align: center;
-                color: #aaa;
-                font-size: 18px;
-            }
+<div class="row">
 
-            h1 {
-                color: #719e40;
-                letter-spacing: -3px;
-                font-family: 'Lato', sans-serif;
-                font-size: 100px;
-                font-weight: 200;
-                margin-bottom: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Posts List</h1>
+    <!-- Blog Entries Column -->
+    <div class="col-md-8">
 
-        <?php /** $posts  */ ?>
+        <h1 class="my-4">Posts Archive
+        </h1>
+
         <?php foreach($posts as $post): ?>
-            <?= $post['title']; ?>
+            <a href="/post/<?= $post['id']; ?>"></a>
+
+            <div class="card mb-4">
+                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                <div class="card-body">
+                    <h2 class="card-title"><?= $post['title']; ?></h2>
+                    <p class="card-text"><?= $post['text']; ?></p>
+                    <a href="/post/<?= $post['id']; ?>" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on <?= $post['datepublished']; ?>
+                    <a href="#"><?= $post['author']; ?></a>
+                </div>
+            </div>
         <?php endforeach; ?>
-    </body>
-</html>
+
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+            <li class="page-item">
+                <a class="page-link" href="#">&larr; Older</a>
+            </li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Newer &rarr;</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<!-- /.row -->

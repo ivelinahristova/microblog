@@ -1,15 +1,20 @@
 <?php
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Microblog\Models\Posts;
 // Routes
 
 $app->get('/', 'Microblog\Controllers\DefaultController:index')
     ->name('index')
     ->setParams([$app]);
 
-$app->get('/post', 'Microblog\Controllers\DefaultController:post')
-    ->name('post')
-    ->setParams([$app]);
+$app->get('/post/:id', function($id) use ($app) {
+    $postsModel = new Posts($app);
+    $post = $postsModel->getById($id);
+
+    $app->render('header.phtml', []);
+    $app->render('post.phtml', ['post' => $post]);
+    $app->render('footer.phtml', []);
+    })
+    ->name('post');
 
 $app->get('/admin', 'Microblog\Controllers\Admin\DashboardController:index')
     ->name('dashboard')

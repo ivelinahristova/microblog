@@ -21,14 +21,8 @@ class DefaultController
         $postsModel = new Posts($app);
         $posts = $postsModel->getAll();
 
+        $app->render('header.phtml', []);
         $app->render('home.phtml', ['posts' => $posts]);
-    }
-
-    public function post(\Slim\Slim $app){
-        $id = 1;
-        $postsModel = new Posts($app);
-        $post = $postsModel->getById($id);
-
-        $app->render('post.phtml', ['post' => $post]);
+        $app->render('footer.phtml', []);
     }
 }
